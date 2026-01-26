@@ -35,6 +35,8 @@ def compare_experiments(experiment_dir="experiments"):
         try:
             data = load_experiment_data(full_path)
             
+            data["run_id"] = folder_name
+            
             all_data.append(data)
         except FileNotFoundError:
             print(f"Skipping {folder_name}: metrics.json not found.")

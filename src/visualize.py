@@ -13,6 +13,13 @@ for run in all_runs:
     
     loss_data = run["loss"]
     
-    ax.plot(loss_data,label="Loss Data")
+    run_name = run["run_id"]
+    
+    ax.plot(loss_data,label=run_name,marker="o")
+    
+    
+ax.legend()
+plt.savefig("benchmark.png")
+print("Benchmarrk saved to benchmark.png")
     
     
