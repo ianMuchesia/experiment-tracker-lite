@@ -78,12 +78,27 @@ class Experiment:
         
         figure.savefig(plot_path)
         
+
+
+        
+def load_experiment(folder,experiment_dir="experiments"):
+    
+    path = os.path.join(experiment_dir,folder,"config.json")
+    
+    with open(path,"r") as f:
+        config = json.load(f)
+        
+        
+    return config
+    
             
             
     
 if __name__ == "__main__":
     # Quick test to see if it creates the folder
-    exp = Experiment(config={"lr": 0.01}, tags=["day2_test"]) 
+    
+    old_config = load_experiment("run20260125_075035")
+    exp = Experiment(config={"lr": old_config["lr"]}, tags=["day2_test"]) 
     
     
     print("Simulating training...")
@@ -104,6 +119,7 @@ if __name__ == "__main__":
     
     exp.save_plot(fig, "loss_curve.png")
     print("Plot saved.")
+    
     
           
     
